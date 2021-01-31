@@ -1,0 +1,37 @@
+version: '3'
+
+networks: 
+  dev_network: 
+    driver: bridge
+    
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+      - MSSQL_PID=Developer
+      - MSSQL_COLLATION=Latin1_General_CI_AI
+      - MSSQL_MEMORY_LIMIT_MB=4096
+      - MSSQL_AGENT_ENABLED=true
+      - MSSQL_BACKUP_DIR=/var/opt/mssql/backup
+    volumes:
+      - C:/Docker/MSSQL/DATA:/var/opt/mssql/data
+      - C:/Docker/MSSQL/BACKUP:/var/opt/mssql/backup
+      - C:/Docker/MSSQL/LOG:/var/opt/mssql/log
+      - C:/Docker/MSSQL/SECRETS:/var/opt/mssql/secrets
+    networks: 
+    - dev_network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "2G"
+    restart: unless-stopped
+  
+volumes:
+  portainer_data: {}
+  
