@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carguero.Shared", "Carguero
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carguero.Tests", "Carguero.Tests\Carguero.Tests.csproj", "{79DA7031-94B5-414D-8936-5BC534CD85FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carguero.Api", "Carguero.Api\Carguero.Api.csproj", "{328AD4D4-27B3-4024-8A18-205219C6006D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{79DA7031-94B5-414D-8936-5BC534CD85FD}.Release|x64.Build.0 = Release|Any CPU
 		{79DA7031-94B5-414D-8936-5BC534CD85FD}.Release|x86.ActiveCfg = Release|Any CPU
 		{79DA7031-94B5-414D-8936-5BC534CD85FD}.Release|x86.Build.0 = Release|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Debug|x64.Build.0 = Debug|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Debug|x86.Build.0 = Debug|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Release|x64.ActiveCfg = Release|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Release|x64.Build.0 = Release|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Release|x86.ActiveCfg = Release|Any CPU
+		{328AD4D4-27B3-4024-8A18-205219C6006D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
