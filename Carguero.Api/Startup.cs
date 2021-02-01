@@ -29,8 +29,19 @@ namespace Carguero.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CargueroDbContext>(options =>
+
+
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+            {
+                services.AddDbContext<CargueroDbContext>(options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MyDbConnection")));
+            }
+            else
+            {
+                services.AddDbContext<CargueroDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            }
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

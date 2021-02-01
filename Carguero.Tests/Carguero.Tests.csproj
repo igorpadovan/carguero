@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Carguero.Shared\Carguero.Shared.csproj" />
     <ProjectReference Include="..\Carguero.Domain\Carguero.Domain.csproj" />
   </ItemGroup>
 
