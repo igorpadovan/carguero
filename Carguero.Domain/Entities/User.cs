@@ -8,16 +8,16 @@ namespace Carguero.Entities
         [Key]
         public  int Id { get; set;}
 
-        private string username;
+        public string Username { get; private set; }
 
         public string GetUsername()
         {
-            return username;
+            return Username;
         }
 
         public void SetUsername(string name)
         {
-            username = name;
+            Username = name;
         }
 
         public IReadOnlyCollection<Address> Addresses

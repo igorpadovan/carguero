@@ -10,7 +10,7 @@ namespace Carguero.Domain.Repositories
 {
     public interface IUserRepository
     {
-        User Save(User user);
+        Task<User> SaveAsync(User user);
         User GetByUsername(string username);
     }
 }

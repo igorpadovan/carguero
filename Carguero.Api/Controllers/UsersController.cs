@@ -22,15 +22,10 @@ namespace Carguero.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);            
             
-            try
-            {
-                _userService.CreateUser(user);
+            
+                await _userService.CreateUser(user);
                 return user;
-            }
-            catch
-            {
-                return BadRequest(new { message = "Could not create user" });
-            }
+            
             
             
         }

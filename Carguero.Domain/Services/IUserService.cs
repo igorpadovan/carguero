@@ -5,6 +5,6 @@ namespace Carguero.Domain.Services
 {
     public interface IUserService
     {
-        bool CreateUser(User user);
+        Task<bool> CreateUser(User user);
     }
 }

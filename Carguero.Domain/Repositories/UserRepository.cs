@@ -17,16 +17,16 @@ namespace Carguero.Domain.Repositories
             _cargueroDbContext = cargueroDbContext;
         }
 
-        public User Save(User user)
+        public async Task<User> SaveAsync(User user)
         {
             _cargueroDbContext.Users.Add(user);
-            _cargueroDbContext.SaveChangesAsync();
+            await _cargueroDbContext.SaveChangesAsync();
             return user;
         }
 
         public User GetByUsername(string username)
         {
-            return (User)_cargueroDbContext.Users.Where(u => u.GetUsername() == username);
+            return _cargueroDbContext.Users.Where(u => u.Username == username).FirstOrDefault();
         }
     }
 }

@@ -16,13 +16,13 @@ namespace Carguero.Domain.Services
         {
             _userRepository = userRepository;
         }
-        public bool CreateUser(User user)
+        public async Task<bool> CreateUser(User user)
         {
             var registeredUser = _userRepository.GetByUsername(user.GetUsername());
             if (registeredUser != null)
                 return false;
 
-            user = _userRepository.Save(user);
+            user = await _userRepository.SaveAsync(user);
             return (user.Id > 0);
         }
     }

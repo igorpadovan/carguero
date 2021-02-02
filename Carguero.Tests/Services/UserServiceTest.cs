@@ -25,7 +25,7 @@ namespace Carguero.Tests.Services
 
             userRepositoryMock.Setup(ur => ur.GetByUsername("igor")).Returns(user);
 
-            var createdUser = userService.CreateUser(user);
+            var createdUser = await userService.CreateUser(user);
             Assert.IsFalse(createdUser);
         }
     }

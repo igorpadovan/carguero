@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Carguero.Domain.Data;
+using Carguero.Domain.Repositories;
 using Carguero.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,13 +44,14 @@ namespace Carguero.Api
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             }
 
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Carguero.Api", Version = "v1" });
-            });
-
-            services.AddScoped<IUserService, UserService>();
+            });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
