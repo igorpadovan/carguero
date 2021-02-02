@@ -10,6 +10,7 @@ namespace Carguero.Domain.Repositories
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAll();
+        User Save(User user);
+        User GetByUsername(string username);
     }
 }

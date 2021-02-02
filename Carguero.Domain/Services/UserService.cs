@@ -1,4 +1,5 @@
 ﻿using Carguero.Domain.Data;
+using Carguero.Domain.Repositories;
 using Carguero.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,19 @@ namespace Carguero.Domain.Services
 {
     public class UserService : IUserService
     {
-        private CargueroDbContext _cargueroDbContext;
-        public UserService(CargueroDbContext cargueroDbContext)
+        private IUserRepository _userRepository;
+        public UserService(IUserRepository userRepository)
         {
-            _cargueroDbContext = cargueroDbContext;
+            _userRepository = userRepository;
         }
-        public async Task Save(User user)
+        public bool CreateUser(User user)
         {
-            _cargueroDbContext.Users.Add(user);
-            await _cargueroDbContext.SaveChangesAsync();
+            var registeredUser = _userRepository.GetByUsername(user.GetUsername());
+            if (registeredUser != null)
+                return false;
+
+            user = _userRepository.Save(user);
+            return (user.Id > 0);
         }
     }
 }

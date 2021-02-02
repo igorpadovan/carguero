@@ -11,7 +11,7 @@ namespace Carguero.Domain.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasIndex(b => b.Username)
+                .HasIndex(b => b.GetUsername())
                 .IsUnique();
         }
 

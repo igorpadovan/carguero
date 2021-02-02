@@ -8,10 +8,17 @@ namespace Carguero.Entities
         [Key]
         public  int Id { get; set;}
 
-        [Required(ErrorMessage = "Username is required.")]
-        [MinLength(3, ErrorMessage = "This field must be between 3 and 30 characters.")]
-        [MaxLength(30, ErrorMessage = "This field must be between 3 and 30 characters.")]
-        public string Username { get; set;}
+        private string username;
+
+        public string GetUsername()
+        {
+            return username;
+        }
+
+        public void SetUsername(string name)
+        {
+            username = name;
+        }
 
         public IReadOnlyCollection<Address> Addresses
         {
@@ -20,7 +27,7 @@ namespace Carguero.Entities
 
         public User(string username)
         {
-            Username = username;
+            SetUsername(username);
             _addresses = new List<Address>();
         }
 

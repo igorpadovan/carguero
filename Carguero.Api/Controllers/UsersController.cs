@@ -24,7 +24,7 @@ namespace Carguero.Controllers
             
             try
             {
-                await _userService.Save(user);
+                _userService.CreateUser(user);
                 return user;
             }
             catch
