@@ -4,7 +4,7 @@
 
 ## Installation
 
-Install [docker](https://www.docker.com/products/docker-desktop), then execute the command below in root of the project
+Install [docker](https://www.docker.com/products/docker-desktop), then execute the command below at the project root.
 ```bash
 docker-compose up -d
 ```
