@@ -25,7 +25,7 @@ namespace Carguero.Controllers
             await _addressService.RegisterAddress(address);
             
             if (address.Id == 0)
-                return BadRequest($"Verify if userId:{address.UserId} exists");
+                return BadRequest("Not possible to register address, verify your data.");
 
             return address;
         }

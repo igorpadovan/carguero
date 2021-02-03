@@ -1,6 +1,7 @@
 ﻿using Carguero.Domain.Services;
 using Carguero.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Carguero.Controllers
@@ -13,6 +14,13 @@ namespace Carguero.Controllers
         public UsersController(IUserService userService)
         {
             _userService = userService;
+        }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<ActionResult<List<User>>> Get()
+        {
+            return await _userService.listRegisteredUsers();
         }
 
         [HttpPost]

@@ -25,5 +25,10 @@ namespace Carguero.Domain.Services
             await _userRepository.SaveAsync(user);
             return (user.Id > 0);
         }
+
+        public async Task<List<User>> listRegisteredUsers()
+        {
+            return await _userRepository.GetUsers();
+        }
     }
 }

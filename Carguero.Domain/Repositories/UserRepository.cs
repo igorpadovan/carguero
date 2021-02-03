@@ -1,5 +1,6 @@
 ﻿using Carguero.Domain.Data;
 using Carguero.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,11 @@ namespace Carguero.Domain.Repositories
         public User GetById(int id)
         {
             return _cargueroDbContext.Users.FirstOrDefault(u => u.Id == id);
+        }
+
+        public async Task<List<User>> GetUsers()
+        {
+            return await _cargueroDbContext.Users.ToListAsync();
         }
     }
 }
