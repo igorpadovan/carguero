@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Carguero.Domain.Repositories
 {
-    public interface IUserRepository
+    public interface IAddressRepository
     {
-        Task<User> SaveAsync(User user);
-        User GetByUsername(string username);
-        User GetById(int id);
+        Task<Address> Save(Address address);
+        Address GetById(int id);
     }
 }

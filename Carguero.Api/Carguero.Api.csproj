@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Carguero.Domain\Carguero.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

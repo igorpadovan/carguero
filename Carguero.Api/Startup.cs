@@ -46,6 +46,8 @@ namespace Carguero.Api
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAddressService, AddressService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

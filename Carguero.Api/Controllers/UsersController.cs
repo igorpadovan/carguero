@@ -23,7 +23,7 @@ namespace Carguero.Controllers
                 return BadRequest(ModelState);            
             
             
-                await _userService.CreateUser(user);
+                await _userService.RegisterUser(user);
                 return user;
             
             

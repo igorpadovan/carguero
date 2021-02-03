@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Carguero.Domain.Services
 {
-    public interface IUserService
+    public interface IAddressService
     {
-        Task<bool> RegisterUser(User user);
+        Task<bool> RegisterAddress(Address address);
     }
 }

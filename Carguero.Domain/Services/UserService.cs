@@ -16,7 +16,7 @@ namespace Carguero.Domain.Services
         {
             _userRepository = userRepository;
         }
-        public async Task<bool> CreateUser(User user)
+        public async Task<bool> RegisterUser(User user)
         {
             var registeredUser = _userRepository.GetByUsername(user.GetUsername());
             if (registeredUser != null)

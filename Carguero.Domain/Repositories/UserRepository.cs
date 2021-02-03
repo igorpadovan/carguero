@@ -28,5 +28,10 @@ namespace Carguero.Domain.Repositories
         {
             return _cargueroDbContext.Users.Where(u => u.Username == username).FirstOrDefault();
         }
+
+        public User GetById(int id)
+        {
+            return _cargueroDbContext.Users.Where(u => u.Id == id).FirstOrDefault();
+        }
     }
 }
