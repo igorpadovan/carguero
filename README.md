@@ -20,3 +20,56 @@ To run test execute
 ```bash
 dotnet test
 ```
+
+## Api Endpoints
+
+###  Register an user
+* **Endpoint**
+
+  http://localhost:5000/users
+
+* **Method:**
+  
+
+`POST` 
+ 
+
+* **Data Params**
+```
+{
+    "username": "data"
+}
+```
+
+###  Register an address
+* **Endpoint**
+
+  http://localhost:5000/addresses
+
+* **Method:**
+  
+
+`POST` 
+ 
+
+* **Data Params**
+```
+{
+  "zipCode": "data",
+  "number": data,
+  "city": "data",
+  "district": "data",
+  "state": "data",
+  "userId": data
+}
+```
+
+###   List all users
+* **Endpoint**
+
+  http://localhost:5000/users
+
+* **Method:**
+  
+
+`POST` 
