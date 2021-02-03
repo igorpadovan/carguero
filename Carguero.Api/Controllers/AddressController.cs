@@ -20,11 +20,14 @@ namespace Carguero.Controllers
         public async Task<ActionResult<Address>> Post([FromBody]Address address)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);            
+                return BadRequest(ModelState);
             
+            await _addressService.RegisterAddress(address);
             
-                await _addressService.RegisterAddress(address);
-                return address;
+            if (address.Id == 0)
+                return BadRequest($"Verify if userId:{address.UserId} exists");
+
+            return address;
         }
     }
 }
