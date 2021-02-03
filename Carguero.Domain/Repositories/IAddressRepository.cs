@@ -10,7 +10,7 @@ namespace Carguero.Domain.Repositories
 {
     public interface IAddressRepository
     {
-        Task<Address> Save(Address address);
+        Task<Address> SaveAsync(Address address);
         Address GetById(int id);
     }
 }

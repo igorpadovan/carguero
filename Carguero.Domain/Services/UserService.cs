@@ -22,7 +22,7 @@ namespace Carguero.Domain.Services
             if (registeredUser != null)
                 return false;
 
-            user = await _userRepository.SaveAsync(user);
+            await _userRepository.SaveAsync(user);
             return (user.Id > 0);
         }
     }

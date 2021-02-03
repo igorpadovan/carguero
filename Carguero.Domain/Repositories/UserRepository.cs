@@ -31,7 +31,7 @@ namespace Carguero.Domain.Repositories
 
         public User GetById(int id)
         {
-            return _cargueroDbContext.Users.Where(u => u.Id == id).FirstOrDefault();
+            return _cargueroDbContext.Users.FirstOrDefault(u => u.Id == id);
         }
     }
 }

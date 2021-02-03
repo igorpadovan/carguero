@@ -18,11 +18,18 @@ namespace Carguero.Domain.Repositories
             return _cargueroDbContext.Addresses.Where(u => u.Id == id).FirstOrDefault();
         }
 
-        public async Task<Address> Save(Address address)
+        public async Task<Address> SaveAsync(Address address)
         {
             _cargueroDbContext.Addresses.Add(address);
             await _cargueroDbContext.SaveChangesAsync();
             return address;
+        }
+
+        public async Task<User> SaveAsync(User user)
+        {
+            _cargueroDbContext.Users.Add(user);
+            await _cargueroDbContext.SaveChangesAsync();
+            return user;
         }
     }
 }

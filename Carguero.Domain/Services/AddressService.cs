@@ -7,14 +7,21 @@ namespace Carguero.Domain.Services
     public class AddressService : IAddressService
     {
         private IAddressRepository _addressRespository;
-        public AddressService(IAddressRepository addressRespository)
+        private IUserRepository _userRepository;
+        public AddressService(IAddressRepository addressRespository, IUserRepository userRepository)
         {
             _addressRespository = addressRespository;
+            _userRepository = userRepository;
         }
 
-        public Task<bool> RegisterAddress(Address address)
+        public async Task<bool> RegisterAddress(Address address)
         {
-            throw new System.NotImplementedException();
+            var user =  _userRepository.GetById(address.UserId);
+            if (user == null)
+                return false;
+            address.setUser(user);
+            await _addressRespository.SaveAsync(address);
+            return (address.Id > 0);
         }
     }
 }

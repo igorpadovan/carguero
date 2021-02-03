@@ -7,27 +7,30 @@ namespace Carguero.Entities
     {
         [Key]
         public int Id { get; private set; }
-            
-        [RegularExpression(@"(/^\d{5}-\d{3}$/ )")]
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "ZipCode must be 10 characters")]
+
+        [Required(ErrorMessage = "ZipCode is required.")]
+        [RegularExpression(@"(^\d{5}-\d{3}$)", ErrorMessage = "ZipCode pattern 00000-000")]
+        [StringLength(9, MinimumLength = 9, ErrorMessage = "ZipCode must be 9 characters")]
         public string ZipCode { get; private set; }
 
         [Required(ErrorMessage = "Number is required.")]
         [Range(1, int.MaxValue, ErrorMessage = "Number must be greater than zero")]
         public int Number { get; private set; }
 
+        [Required(ErrorMessage = "City is required.")]
         [MinLength(3, ErrorMessage = "This field must be between 3 and 60 characters.")]
         [MaxLength(60, ErrorMessage = "This field must be between 3 and 60 characters.")]
         public string City { get; private set; }
 
+        [Required(ErrorMessage = "District is required.")]
         [MinLength(3, ErrorMessage = "This field must be between 3 and 60 characters.")]
         [MaxLength(60, ErrorMessage = "This field must be between 3 and 60 characters.")]
         public string District { get; private set; }
 
-        [MinLength(3, ErrorMessage = "This field must be between 3 and 60 characters.")]
         [MaxLength(100, ErrorMessage = "This field must be between 3 and 100 characters.")]
         public string Complement { get; private set; }
 
+        [Required(ErrorMessage = "State is required.")]
         [MinLength(3, ErrorMessage = "This field must be between 3 and 60 characters.")]
         [MaxLength(60, ErrorMessage = "This field must be between 3 and 60 characters.")]
         public string State { get; private set; }
@@ -46,7 +49,12 @@ namespace Carguero.Entities
             Complement = complement;
             State = state;
             UserId = userId;
-        }        
+        }     
+        
+        public void SetId(int id)
+        {
+            Id = id;
+        }
 
         public void UpdateAddress(int id, int number, string complement)
         {
@@ -55,6 +63,10 @@ namespace Carguero.Entities
             Complement = complement;
         }
 
+        public void setUser(User user)
+        {
+            User = user;
+        }
         public void Destroy(int id, string username)
         {
 
