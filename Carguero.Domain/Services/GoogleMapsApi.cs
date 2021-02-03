@@ -16,7 +16,6 @@ namespace Carguero.Domain.Services
         public async Task<GoogleMapsCandidatesAddress> SearchAddress(Address address)
         {
             var restClient = new RestClient("https://maps.googleapis.com/maps/api");
-                //input = 79006331 & inputtype = textquery & fields = formatted_address & key = AIzaSyDXWuu3VSPwFfKFKcgYivrtrqBUqcPQCWQ
                 var request = new RestRequest("/place/findplacefromtext/json", Method.GET);
             request.AddParameter("input", "", ParameterType.QueryString);
             request.AddParameter("inputtype", "textquery", ParameterType.QueryString);
