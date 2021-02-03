@@ -20,11 +20,6 @@ namespace Carguero.Entities
             Username = name;
         }
 
-        public IReadOnlyCollection<Address> Addresses
-        {
-            get { return _addresses.ToArray(); }
-        }
-
         public User(string username)
         {
             SetUsername(username);
