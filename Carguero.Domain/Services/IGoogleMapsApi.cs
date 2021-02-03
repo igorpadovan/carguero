@@ -10,6 +10,6 @@ namespace Carguero.Domain.Services
 {
     public interface IGoogleMapsApi
     {
-        Task<GoogleMapsCandidatesAddress> SearchAddress(Address address);
+        Task<GoogleMapsCandidatesAddress> SearchAddress(string address);
     }
 }

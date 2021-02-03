@@ -12,7 +12,7 @@ namespace Carguero.Domain.Entities
     public class GoogleMapsCandidatesAddress
     {
         [JsonProperty(PropertyName = "candidates")]
-        List<GoogleMapsCandidates> GoogleMapsCandidates;
+        public List<GoogleMapsCandidates> GoogleMapsCandidates { get; set; }
     }   
 
 }

@@ -1,26 +1,32 @@
-﻿using Carguero.Domain.Entities;
+﻿using Carguero.Domain.Config;
+using Carguero.Domain.Entities;
 using Carguero.Entities;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Carguero.Domain.Services
 {
     public class GoogleMapsApi: IGoogleMapsApi
     {
-        public async Task<GoogleMapsCandidatesAddress> SearchAddress(Address address)
+        private readonly GoogleMapsConfig _config;
+        public GoogleMapsApi(IOptions<GoogleMapsConfig> config)
         {
-            var restClient = new RestClient("https://maps.googleapis.com/maps/api");
-                var request = new RestRequest("/place/findplacefromtext/json", Method.GET);
-            request.AddParameter("input", "", ParameterType.QueryString);
-            request.AddParameter("inputtype", "textquery", ParameterType.QueryString);
-            request.AddParameter("fields", "formatted_address", ParameterType.QueryString);
-            request.AddParameter("key", "", ParameterType.QueryString);
+            _config = config.Value;
+        }
+        public async Task<GoogleMapsCandidatesAddress> SearchAddress(string  address)
+        {
+            var restClient = new RestClient(_config.MapsURI);
+            var request = new RestRequest(_config.Path, Method.GET);
+
+            request.AddParameter("input", address, ParameterType.QueryString);
+            request.AddParameter("inputtype", _config.Inputtype, ParameterType.QueryString);
+            request.AddParameter("fields", _config.Fields, ParameterType.QueryString);
+            request.AddParameter("key", _config.ApiKey, ParameterType.QueryString);
 
             var response = await restClient.ExecuteAsync(request);
             if (response.StatusCode == HttpStatusCode.OK)
@@ -31,5 +37,7 @@ namespace Carguero.Domain.Services
 
             return null;
         }
+
+        
     }
 }
