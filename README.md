@@ -63,3 +63,13 @@ dotnet test
   "userId": data
 }
 ```
+
+###   List all users
+* **Endpoint**
+
+  http://localhost:5000/users
+
+* **Method:**
+  
+
+`POST` 
