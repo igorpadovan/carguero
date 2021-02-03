@@ -48,6 +48,7 @@ namespace Carguero.Api
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IGoogleMapsApi, GoogleMapsApi>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
