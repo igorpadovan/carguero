@@ -18,13 +18,13 @@ namespace Carguero.Controllers
 
         [HttpPost]
         [Route("")]
-        public async Task<ActionResult<Address>> Post([FromBody]Address address)
+        public async Task<ActionResult<Address>> Post([FromBody] Address address)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            
+
             await _addressService.RegisterAddress(address);
-            
+
             if (address.Id == 0)
                 return BadRequest("Not possible to register address, verify your data.");
 
@@ -42,10 +42,20 @@ namespace Carguero.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<ActionResult<User>> Search([FromQuery] string username)
+        public async Task<ActionResult<Address>> Search([FromQuery] string username)
         {
-            var user = _addressService.GetAddressesByUsername(username);
-            return Ok(user);
+            var address = _addressService.GetAddressesByUsername(username);
+            return Ok(address);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Address>> Delete(int id)
+        {
+            var address = _addressService.Delete(id);            
+            return Ok();
+        }
+
+
+
     }
 }

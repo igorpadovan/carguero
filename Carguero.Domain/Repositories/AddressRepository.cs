@@ -1,5 +1,6 @@
 ﻿using Carguero.Domain.Data;
 using Carguero.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,16 @@ namespace Carguero.Domain.Repositories
 
         public List<Address> GetAddressesByUsername(string username)
         {
-            return _cargueroDbContext.Addresses.Where(x => x.User.Username == username).ToList();
+            return _cargueroDbContext.Addresses.Where(x => x.User.Username == username).Include(a => a.User).ToList();
+        }
+
+        public int Delete(int id)
+        {
+            var address = GetById(id);
+            if (address == null)
+                return 0;
+            _cargueroDbContext.Remove(address);
+            return _cargueroDbContext.SaveChanges();
         }
     }
 }

@@ -109,6 +109,11 @@ namespace Carguero.Domain.Services
             var addresses = _addressRespository.GetAddressesByUsername(username);
             return addresses;
         }
+
+        public int Delete(int id)
+        {
+            return _addressRespository.Delete(id);
+        }
     }
 }
 

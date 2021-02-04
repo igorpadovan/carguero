@@ -11,5 +11,6 @@ namespace Carguero.Domain.Services
         Task<bool> IsBrazilianAddress(Address address);
         string FormatAddressForMapsApi(Address address);
         List<Address> GetAddressesByUsername(string username);
+        int Delete(int id);
     }
 }

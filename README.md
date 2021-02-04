@@ -139,3 +139,12 @@ dotnet test
   "username": "data"
 }
 ```
+
+###  Delete addresses by id
+* **Endpoint**
+
+  http://localhost:5000/addresses/{id}
+
+* **Method:**
+
+`GET` 

@@ -14,5 +14,6 @@ namespace Carguero.Domain.Repositories
         Address GetById(int id);
         Task<Address> UpdateAsync(Address address);
         List<Address> GetAddressesByUsername(string username);
+        int Delete(int id);
     }
 }
