@@ -101,20 +101,13 @@ dotnet test
 ###  Get addresses by username
 * **Endpoint**
 
-  http://localhost:5000/addresses/search
+  http://localhost:5000/addresses/search/{username}
 
 * **Method:**
   
 
 `GET` 
  
-
-* **Data Params**
-```
-{
-  "username": "data"
-}
-```
 
 ###  Delete addresses by id
 * **Endpoint**
