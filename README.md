@@ -75,29 +75,6 @@ dotnet test
 `GET` 
 
 
-###  Register an address
-* **Endpoint**
-
-  http://localhost:5000/addresses
-
-* **Method:**
-  
-
-`POST` 
- 
-
-* **Data Params**
-```
-{
-  "zipCode": "data",
-  "number": data,
-  "city": "data",
-  "district": "data",
-  "state": "data",
-  "userId": data
-}
-```
-
 ###  Update an address
 * **Endpoint**
 
