@@ -25,11 +25,11 @@ namespace Carguero.Domain.Repositories
             return address;
         }
 
-        public async Task<User> SaveAsync(User user)
+        public async Task<Address> UpdateAsync(Address address)
         {
-            _cargueroDbContext.Users.Add(user);
+            _cargueroDbContext.Addresses.Add(address);
             await _cargueroDbContext.SaveChangesAsync();
-            return user;
+            return address;
         }
     }
 }

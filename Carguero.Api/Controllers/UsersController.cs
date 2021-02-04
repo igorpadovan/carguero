@@ -2,6 +2,7 @@
 using Carguero.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Carguero.Controllers
@@ -20,7 +21,7 @@ namespace Carguero.Controllers
         [Route("")]
         public async Task<ActionResult<List<User>>> Get()
         {
-            return await _userService.listRegisteredUsers();
+            return Ok(await _userService.ListRegisteredUsers());
         }
 
         [HttpPost]
@@ -28,14 +29,17 @@ namespace Carguero.Controllers
         public async Task<ActionResult<User>> Post([FromBody]User user)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);            
+                return BadRequest(ModelState);      
             
-            
-                await _userService.RegisterUser(user);
-                return user;
-            
-            
-            
+            await _userService.RegisterUser(user);
+            return Ok(user);            
+        }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<User>> Search([FromQuery]string username)
+        {
+            var user = _userService.GetByUsername(username);
+            return Ok(user);
         }
     }
 }

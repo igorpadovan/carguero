@@ -1,6 +1,7 @@
 ﻿using Carguero.Domain.Services;
 using Carguero.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Carguero.Controllers
@@ -27,7 +28,17 @@ namespace Carguero.Controllers
             if (address.Id == 0)
                 return BadRequest("Not possible to register address, verify your data.");
 
-            return address;
+            return Ok(HttpStatusCode.Created);
+        }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<ActionResult<Address>> Put([FromBody] Address address)
+        {
+            var updated = await _addressService.UpdateAddress(address);
+            if (!updated)
+                return BadRequest(HttpStatusCode.UnprocessableEntity);
+            return Ok(HttpStatusCode.NoContent);
         }
     }
 }

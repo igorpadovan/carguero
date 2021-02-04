@@ -13,7 +13,6 @@ namespace Carguero.Domain.Repositories
         Task<User> SaveAsync(User user);
         User GetByUsername(string username);
         User GetById(int id);
-
         Task<List<User>> GetUsers();
     }
 }

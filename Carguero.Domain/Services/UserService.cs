@@ -26,9 +26,14 @@ namespace Carguero.Domain.Services
             return (user.Id > 0);
         }
 
-        public async Task<List<User>> listRegisteredUsers()
+        public async Task<List<User>> ListRegisteredUsers()
         {
             return await _userRepository.GetUsers();
+        }
+
+        public User GetByUsername(string username)
+        {
+            return _userRepository.GetByUsername(username);
         }
     }
 }

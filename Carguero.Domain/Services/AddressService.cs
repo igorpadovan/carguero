@@ -1,6 +1,7 @@
 ﻿using Carguero.Domain.Entities;
 using Carguero.Domain.Repositories;
 using Carguero.Entities;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Carguero.Domain.Services
@@ -26,10 +27,10 @@ namespace Carguero.Domain.Services
             var user =  _userRepository.GetById(address.UserId);
             if (user == null)
                 return false;
-            address.setUser(user);
+            address.SetUser(user);
 
-            bool iSBrazilianAddress =  await IsBrazilianAddress(address);
-            if (!iSBrazilianAddress)
+            bool addressFromBrazil = await IsBrazilianAddress(address);
+            if (!addressFromBrazil)
                 return false;
 
             await _addressRespository.SaveAsync(address);
@@ -43,18 +44,15 @@ namespace Carguero.Domain.Services
 
             if (googleMapsAddress.GoogleMapsCandidates.Count == 0)
                 return false;
-            foreach (var candidate  in googleMapsAddress.GoogleMapsCandidates)
-            {
-                if (candidate.FormattedAddress == formatedAddress)
-                    return true;
-            }
-            return false;
+            if (googleMapsAddress.GoogleMapsCandidates.Count > 1)
+                return false;
+            return true;
         }
 
         public string FormatAddressForMapsApi(Address address)
         {
             return $"{address.District}, {address.City} - {AbbreviatedState(address.State)}, {address.ZipCode}, Brasil";
-        }
+        }        
 
         public string AbbreviatedState(string state)
         {
@@ -89,6 +87,20 @@ namespace Carguero.Domain.Services
                 case "TOCANTÍNS": Abbreviated = "TO"; break;
             }
             return Abbreviated;
+        }
+
+        public async Task<bool> UpdateAddress(Address address)
+        {
+            var registeredAddress = _addressRespository.GetById(address.Id);
+            if (registeredAddress == null)
+                return false;
+            registeredAddress.SetComplement(address.Complement);
+            registeredAddress.SetNumber(address.Number);
+
+            var updated = await _addressRespository.UpdateAsync(registeredAddress);
+            return (updated.Complement == address.Complement
+                && updated.Number == address.Number);
+
         }
     }
 }

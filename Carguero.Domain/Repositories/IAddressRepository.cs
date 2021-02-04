@@ -12,5 +12,6 @@ namespace Carguero.Domain.Repositories
     {
         Task<Address> SaveAsync(Address address);
         Address GetById(int id);
+        Task<Address> UpdateAsync(Address address);
     }
 }

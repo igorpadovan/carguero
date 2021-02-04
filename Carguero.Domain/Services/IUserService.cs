@@ -8,6 +8,7 @@ namespace Carguero.Domain.Services
     {
         Task<bool> RegisterUser(User user);
 
-        Task<List<User>> listRegisteredUsers();
+        Task<List<User>> ListRegisteredUsers();
+        User GetByUsername(string username);
     }
 }

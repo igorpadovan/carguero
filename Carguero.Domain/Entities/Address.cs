@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace Carguero.Entities
@@ -6,6 +7,7 @@ namespace Carguero.Entities
     public class Address
     {
         [Key]
+        [JsonProperty("id")]
         public int Id { get; private set; }
 
         [Required(ErrorMessage = "ZipCode is required.")]
@@ -63,9 +65,18 @@ namespace Carguero.Entities
             Complement = complement;
         }
 
-        public void setUser(User user)
+        public void SetUser(User user)
         {
             User = user;
+        }
+
+        public void SetComplement(string complement)
+        {
+            Complement = complement;
+        }
+        public void SetNumber(int number)
+        {
+            Number = number; ;
         }
         public void Destroy(int id, string username)
         {
