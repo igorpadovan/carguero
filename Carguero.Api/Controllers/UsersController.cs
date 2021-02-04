@@ -32,7 +32,9 @@ namespace Carguero.Controllers
                 return BadRequest(ModelState);      
             
             await _userService.RegisterUser(user);
-            return Ok(user);            
+            if (user.Id == 0)
+                return BadRequest();
+            return Ok();            
         }
 
         [HttpGet("search")]

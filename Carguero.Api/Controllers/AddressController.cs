@@ -26,7 +26,7 @@ namespace Carguero.Controllers
             await _addressService.RegisterAddress(address);
 
             if (address.Id == 0)
-                return BadRequest("Not possible to register address, verify your data.");
+                return BadRequest("Not possible to register address, verify your data and you maps api key.");
 
             return Ok(HttpStatusCode.Created);
         }
