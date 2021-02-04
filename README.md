@@ -8,7 +8,7 @@ Install [docker](https://www.docker.com/products/docker-desktop), then execute t
 ```bash
 docker-compose up -d
 ```
-
+Set your google maps api key on file *Carguero.Api/appsettings.json* on index GoogleApi:ApiKey  
 Create a new database named *Carguero*, then your are ready to run the api using the commande below
 
 ```bash
@@ -72,31 +72,7 @@ dotnet test
 * **Method:**
   
 
-`POST` 
-
-
-###  Register an address
-* **Endpoint**
-
-  http://localhost:5000/addresses
-
-* **Method:**
-  
-
-`POST` 
- 
-
-* **Data Params**
-```
-{
-  "zipCode": "data",
-  "number": data,
-  "city": "data",
-  "district": "data",
-  "state": "data",
-  "userId": data
-}
-```
+`GET` 
 
 ###  Update an address
 * **Endpoint**
@@ -148,3 +124,4 @@ dotnet test
 * **Method:**
 
 `GET` 
+
