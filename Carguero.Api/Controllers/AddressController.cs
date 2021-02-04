@@ -41,8 +41,8 @@ namespace Carguero.Controllers
             return Ok(HttpStatusCode.NoContent);
         }
 
-        [HttpGet("search")]
-        public async Task<ActionResult<Address>> Search([FromQuery] string username)
+        [HttpGet("search/{username}")]
+        public async Task<ActionResult<Address>> Search(string username)
         {
             var address = _addressService.GetAddressesByUsername(username);
             return Ok(address);
