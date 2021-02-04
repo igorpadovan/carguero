@@ -109,7 +109,7 @@ dotnet test
 `GET` 
  
 
-###  Delete addresses by id
+###  Delete address by id
 * **Endpoint**
 
   http://localhost:5000/addresses/{id}
