@@ -72,7 +72,7 @@ dotnet test
 * **Method:**
   
 
-`POST` 
+`GET` 
 
 
 ###  Register an address
