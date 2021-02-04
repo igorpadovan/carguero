@@ -40,5 +40,12 @@ namespace Carguero.Controllers
                 return BadRequest(HttpStatusCode.UnprocessableEntity);
             return Ok(HttpStatusCode.NoContent);
         }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<User>> Search([FromQuery] string username)
+        {
+            var user = _addressService.GetAddressesByUsername(username);
+            return Ok(user);
+        }
     }
 }

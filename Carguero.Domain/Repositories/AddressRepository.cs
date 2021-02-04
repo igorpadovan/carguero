@@ -1,6 +1,7 @@
 ﻿using Carguero.Domain.Data;
 using Carguero.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,6 +31,11 @@ namespace Carguero.Domain.Repositories
             _cargueroDbContext.Addresses.Add(address);
             await _cargueroDbContext.SaveChangesAsync();
             return address;
+        }
+
+        public List<Address> GetAddressesByUsername(string username)
+        {
+            return _cargueroDbContext.Addresses.Where(x => x.User.Username == username).ToList();
         }
     }
 }

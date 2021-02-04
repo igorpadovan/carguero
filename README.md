@@ -121,3 +121,21 @@ dotnet test
   "userId": data
 }
 ```
+
+###  Get addresses by username
+* **Endpoint**
+
+  http://localhost:5000/addresses/search
+
+* **Method:**
+  
+
+`GET` 
+ 
+
+* **Data Params**
+```
+{
+  "username": "data"
+}
+```

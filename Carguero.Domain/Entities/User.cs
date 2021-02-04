@@ -3,8 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Carguero.Entities
 {
-    public class User{
-        private List<Address> _addresses { get; set; }
+    public class User{        
         [Key]
         public  int Id { get; set;}
 
@@ -23,12 +22,6 @@ namespace Carguero.Entities
         public User(string username)
         {
             SetUsername(username);
-            _addresses = new List<Address>();
-        }
-
-        public void RegisterAddress(Address address)
-        {
-            _addresses.Add(address);
         }
 
 

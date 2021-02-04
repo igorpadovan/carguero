@@ -1,6 +1,7 @@
 ﻿using Carguero.Domain.Entities;
 using Carguero.Domain.Repositories;
 using Carguero.Entities;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -102,5 +103,12 @@ namespace Carguero.Domain.Services
                 && updated.Number == address.Number);
 
         }
+
+        public List<Address> GetAddressesByUsername(string username)
+        {
+            var addresses = _addressRespository.GetAddressesByUsername(username);
+            return addresses;
+        }
     }
 }
+
