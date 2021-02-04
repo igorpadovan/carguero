@@ -124,7 +124,7 @@ dotnet test
 ###  Get addresses by username
 * **Endpoint**
 
-  http://localhost:5000/addresses/search
+  http://localhost:5000/addresses/search/{username}
 
 * **Method:**
   
@@ -132,14 +132,7 @@ dotnet test
 `GET` 
  
 
-* **Data Params**
-```
-{
-  "username": "data"
-}
-```
-
-###  Delete addresses by id
+###  Delete address by id
 * **Endpoint**
 
   http://localhost:5000/addresses/{id}
