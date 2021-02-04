@@ -32,7 +32,6 @@ namespace Carguero.Controllers
         }
 
         [HttpPut("{id}")]
-        [Route("")]
         public async Task<ActionResult<Address>> Put(int id, [FromBody] Address address)
         {
             address.SetId(id);
