@@ -27,11 +27,12 @@ namespace Carguero.Domain.Repositories
             return address;
         }
 
-        public async Task<Address> UpdateAsync(Address address)
+        public void Update(Address address)
         {
-            _cargueroDbContext.Addresses.Add(address);
-            await _cargueroDbContext.SaveChangesAsync();
-            return address;
+            var updateAddress = _cargueroDbContext.Addresses.FirstOrDefault(a => a.Id == address.Id);
+            updateAddress.SetComplement(address.Complement);
+            updateAddress.SetNumber(address.Number);
+            _cargueroDbContext.SaveChanges();
         }
 
         public List<Address> GetAddressesByUsername(string username)

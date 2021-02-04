@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace Carguero.Entities
@@ -7,7 +6,6 @@ namespace Carguero.Entities
     public class Address
     {
         [Key]
-        [JsonProperty("id")]
         public int Id { get; private set; }
 
         [Required(ErrorMessage = "ZipCode is required.")]

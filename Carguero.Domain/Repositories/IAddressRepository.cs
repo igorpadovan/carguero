@@ -12,7 +12,7 @@ namespace Carguero.Domain.Repositories
     {
         Task<Address> SaveAsync(Address address);
         Address GetById(int id);
-        Task<Address> UpdateAsync(Address address);
+        void Update(Address address);
         List<Address> GetAddressesByUsername(string username);
         int Delete(int id);
     }

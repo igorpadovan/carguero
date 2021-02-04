@@ -95,12 +95,9 @@ namespace Carguero.Domain.Services
             var registeredAddress = _addressRespository.GetById(address.Id);
             if (registeredAddress == null)
                 return false;
-            registeredAddress.SetComplement(address.Complement);
-            registeredAddress.SetNumber(address.Number);
 
-            var updated = await _addressRespository.UpdateAsync(registeredAddress);
-            return (updated.Complement == address.Complement
-                && updated.Number == address.Number);
+            _addressRespository.Update(address);
+            return true;
 
         }
 

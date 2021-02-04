@@ -31,10 +31,11 @@ namespace Carguero.Controllers
             return Ok(HttpStatusCode.Created);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [Route("")]
-        public async Task<ActionResult<Address>> Put([FromBody] Address address)
+        public async Task<ActionResult<Address>> Put(int id, [FromBody] Address address)
         {
+            address.SetId(id);
             var updated = await _addressService.UpdateAddress(address);
             if (!updated)
                 return BadRequest(HttpStatusCode.UnprocessableEntity);
